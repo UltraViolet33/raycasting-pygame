@@ -3,6 +3,7 @@ import sys
 import math
 from settings import *
 from map import *
+from player import *
 
 
 class Game:
@@ -10,18 +11,22 @@ class Game:
         pygame.init()
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         self.clock = pygame.time.Clock()
+        
         self.new_game()        
         
     def new_game(self):
         self.map = Map(self)
+        self.player = Player(self)
         
     def update(self):
+        self.player.update()
         pygame.display.flip()
         
         
     def draw(self):
         self.screen.fill("black")
         self.map.draw()
+        self.player.draw()
         
     
     def check_events(self):
@@ -29,41 +34,21 @@ class Game:
             if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                 pygame.quit()
                 sys.exit()
+                
+                
         
     def run(self):
         while True:
             self.check_events()
             self.update()
             self.draw()
+            self.clock.tick(FPS)
             
             
 if __name__ == "__main__":
     game = Game()
     game.run()
 
-# contants
-
-
-# player_x = (SCREEN_WIDTH / 2) / 2
-# player_y = (SCREEN_WIDTH / 2) / 2
-# player_angle = math.pi
-
-# # map
-# MAP = (
-#     '########'
-#     '#  #   #'
-#     '#  # ###'
-#     '#      #'
-#     '#      #'
-#     '#  ##  #'
-#     '#   #  #'
-#     '########'
-
-# )
-
-
-
-# pygame.display.set_caption("Ray casting")
 
 
 # def draw_map():
@@ -174,23 +159,7 @@ if __name__ == "__main__":
 #     cast_rays()
 
 #     # user inputs
-#     keys = pygame.key.get_pressed()
-
-#     if keys[pygame.K_LEFT]:
-#         player_angle -= 0.1
-
-#     if keys[pygame.K_RIGHT]:
-#         player_angle += 0.1
-
-#     if keys[pygame.K_z]:
-#         forward = True
-#         player_x += - math.sin(player_angle) * 5
-#         player_y += math.cos(player_angle) * 5
-
-#     if keys[pygame.K_s]:
-#         forward = False
-#         player_x -= - math.sin(player_angle) * 5
-#         player_y -= math.cos(player_angle) * 5
+#     
 
 #     # set FPS
 #     clock.tick(30)
