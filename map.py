@@ -1,21 +1,11 @@
 import pygame
 from settings import *
 
-mini_map = (
-    '########'
-    '#  #   #'
-    '#  # ###'
-    '#      #'
-    '#      #'
-    '#  ##  #'
-    '#   #  #'
-    '########'
-)
 
 class Map:
     def __init__(self, game):
         self.game = game
-        self.mini_map = mini_map
+        self.mini_map = MAP
 
     def draw(self):
         for row in range(8):

@@ -2,9 +2,9 @@ import pygame
 import sys
 import math
 from settings import *
-from map import *
-from player import *
-from raycasting import *
+from Map import *
+from Player import *
+from Raycasting import *
 
 
 class Game:
@@ -21,7 +21,7 @@ class Game:
 
     def update(self):
         self.player.update()
-        
+
         pygame.display.flip()
 
     def draw(self):
