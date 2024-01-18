@@ -2,9 +2,9 @@ import pygame
 import sys
 import math
 from settings import *
-from Map import *
-from Player import *
-from Raycasting import *
+from map import *
+from player import *
+from raycasting import *
 
 
 class Game:
